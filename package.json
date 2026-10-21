@@ -1,0 +1,25 @@
+{
+  "name": "nueva-ia",
+  "version": "1.0.0",
+  "description": "Nueva IA - agentes todo en uno",
+  "main": "main.js",
+  "author": "Nueva IA <contacto@example.com>",
+  "scripts": {
+    "start": "electron .",
+    "dist:mac": "electron-builder --mac --arm64 --x64",
+    "dist:linux": "electron-builder --linux --x64 --arm64",
+    "dist:win-user": "electron-builder --win --x64 --arm64",
+    "dist:win-system": "electron-builder --win --x64 --arm64 --config electron-builder.system.js"
+  },
+  "devDependencies": { "electron": "^33.0.0", "electron-builder": "^25.0.0" },
+  "build": {
+    "appId": "com.nuevaia.app",
+    "productName": "Nueva IA",
+    "files": ["main.js", "preload.js", "index.html"],
+    "directories": { "output": "dist" },
+    "mac": { "target": ["pkg"], "minimumSystemVersion": "12.0", "category": "public.app-category.productivity", "artifactName": "NuevaIA-mac-${arch}.${ext}" },
+    "linux": { "target": ["deb", "tar.gz"], "category": "Utility", "maintainer": "Nueva IA <contacto@example.com>", "artifactName": "NuevaIA-linux-${arch}.${ext}" },
+    "win": { "target": ["nsis"] },
+    "nsis": { "oneClick": false, "perMachine": false, "allowToChangeInstallationDirectory": true, "buildUniversalInstaller": false, "artifactName": "NuevaIA-win-${arch}-user.${ext}" }
+  }
+}
